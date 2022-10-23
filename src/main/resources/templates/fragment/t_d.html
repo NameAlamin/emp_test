@@ -1,0 +1,19 @@
+<td>
+    <div>
+        <select class="form-control" id="division" th:field="${employeeInfo.addresses}" onchange="getCityList()">
+            <option value="">Division Select</option>
+            <option th:each="address : ${addressList}" th:value="${address.id}" th:text="${address.addressName}"></option>
+        </select>
+    </div>
+</td>
+<td>
+    <div>
+        <select class="form-control" id="city">
+            <option value="">City Select</option>
+            <!--<option th:each="option : ${addressList}" th:value="${option.id}" th:text="${option.addressName}"></option>-->
+        </select>
+    </div>
+</td>
+<td>
+    <button class="btn btn-danger" id="click_remove" onclick="clickRemove()"> - </button>
+</td>
