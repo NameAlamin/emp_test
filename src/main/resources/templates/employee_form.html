@@ -101,7 +101,7 @@
                                     </th>
                                 </tr>
 
-                                <tr>
+                                <tr id="address">
                                     <td>
                                         <div>
                                             <select class="form-control" id="division" th:field="${employeeInfo.addresses}" onchange="getCityList()">
@@ -119,7 +119,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger" id="click_remove" onclick="clickRemove()"> - </button>
+                                        <a class="btn btn-danger" id="click_remove"> - </a>
                                     </td>
 
                                 </tr>
@@ -147,7 +147,6 @@
 <script>
     function getCityList() {
         let value = $('#division :selected').val();
-        alert("msg")
         //console.log(value);
         $('#city').empty();
         $('#city').append('<option value="">City Select</option>');
@@ -166,9 +165,16 @@
     }
 
     function addNew(){
-        alert("Button Clicked");
-        // $("#addressParent").append(<td th:replace="/fragment/t_d.html::table_data"></td>)
+		let addressRow = $("#address").html();
+
+	    $(".table").append("<tr>"+addressRow+"</tr>");
     }
+
+	$(document).delegate('#click_remove', 'click', function () {
+		if($(".table tr").length > 2){
+			$(this).closest('tr').remove();
+		}
+	});
 
 </script>
 </body>

@@ -4,26 +4,20 @@ import com.newasia.hrm.model.EmployeeInfo;
 import com.newasia.hrm.service.service_implementation.AddressService;
 import com.newasia.hrm.service.service_implementation.DepartmentService;
 import com.newasia.hrm.service.service_implementation.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@AllArgsConstructor
 @Controller
 public class EmployeeController {
 
    private final DepartmentService departmentService;
    private final EmployeeService employeeService;
    private final AddressService addressService;
-
-    public EmployeeController(DepartmentService departmentService,
-                              EmployeeService employeeService,
-                              AddressService addressService) {
-        this.departmentService = departmentService;
-        this.employeeService = employeeService;
-        this.addressService = addressService;
-    }
 
     @GetMapping("/")
     public String showPage(Model model){
